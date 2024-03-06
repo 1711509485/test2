@@ -9,6 +9,7 @@ import pickle
 import tempfile
 from io import BytesIO
 from datetime import datetime
+import zipfile
 
 # 创建基面1和基面2
 def show_base1():
