@@ -1068,7 +1068,7 @@ def show_base4():
     df_sta.columns = df_sta_name.iloc[0, :]
 
     # df_ts = pd.read_pickle(os.path.join(file_path, 'ZI 高频-脱敏发出20230823.pkl'))
-    df_ts.columns = df_ts_name.iloc[0, :]
+    # df_ts.columns = df_ts_name.iloc[0, :]
 
     st.title("转炉质量根因分析模型离线仿真器")
     # 创建一个二级标题
