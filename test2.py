@@ -15,9 +15,9 @@ def show_base1():
     try:
         # 在这里放置您的Streamlit应用程序逻辑
         # 输入文件名======================================================================
-        data_file = '必要文件'
+        data_file = '必要数据'
         # 2、获取低频数据和高频数据的中文表头
-        file_name = r'必要文件' \
+        file_name = r'必要数据' \
                     r'/低频数据和高频数据表头20230823.xlsx'
         df_sta_name = pd.read_excel(file_name,sheet_name='低频数据') # 读取低频数据
         df_ts_name = pd.read_excel(file_name,sheet_name='高频数据')
@@ -234,8 +234,8 @@ def show_base2():
     pd.set_option('display.float_format', lambda x: '{:.2f}'.format(x))
 
 
-    file = "必要文件\8_606炉次_241变量.xlsx"
-    file_name = "必要文件\8_606炉次_变量名.csv"
+    file = "必要数据\8_606炉次_241变量.xlsx"
+    file_name = "必要数据\8_606炉次_变量名.csv"
 
     def load_sta_data(file):
         data = pd.read_excel(file)
@@ -710,7 +710,7 @@ def show_base3():
     if uploaded_file_sta is not None:
 
         # 1、读取低频数据======================
-        file = '必要文件'
+        file = '必要数据'
         # df_sta = pd.read_pickle(os.path.join(file,'ZI 低频-脱敏发出20230823.pkl'))
         df_sta = read_file(uploaded_file_sta)
         # 读取双渣操作的炉次
@@ -1054,7 +1054,7 @@ def show_base4():
         return [item for item in original_list if item not in to_delete]
 
     # 文件路径
-    file_path = '必要文件'
+    file_path = '必要数据'
     pickle_file_path = os.path.join(file_path, 'ZI 低频-脱敏发出20230823.pkl')
     excel_file_path = os.path.join(file_path, '双渣炉次炉次号20230918.xlsx')
     df_sta_name_path = os.path.join(file_path, '低频数据和高频数据表头20230823.xlsx')
