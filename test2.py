@@ -1066,16 +1066,16 @@ def show_base4():
     df_ts_name = pd.read_excel(df_sta_name_path, sheet_name='高频数据')
     df_sta.columns = df_sta_name.iloc[0, :]
 
-    df_ts = pd.read_pickle(os.path.join(file_path, 'ZI 高频-脱敏发出20230823.pkl'))
+    # df_ts = pd.read_pickle(os.path.join(file_path, 'ZI 高频-脱敏发出20230823.pkl'))
     df_ts.columns = df_ts_name.iloc[0, :]
 
     st.title("转炉质量根因分析模型离线仿真器")
     # 创建一个二级标题
     st.subheader("3-高频数据筛选")
 
-    def load_ts_data():
-        df_ts = pd.read_pickle(os.path.join(file_path, 'ZI 高频-脱敏发出20230823.pkl'))
-        return df_ts
+    # def load_ts_data():
+    #     df_ts = pd.read_pickle(os.path.join(file_path, 'ZI 高频-脱敏发出20230823.pkl'))
+    #     return df_ts
 
     uploaded_file_sta = st.file_uploader("上传高频数据", type=['xlsx', 'rar', 'zip'],
                                          key="ts_file_uploader_1")  # ,'csv'
@@ -1103,6 +1103,24 @@ def show_base4():
         # st.write("高频数据载入成功")
         st.success("高频数据载入成功,载入{}炉次高频数据".format(631))
         # st.write(df_ts)
+
+                # 解压缩zip文件并读取其中的csv文件
+        with zipfile.ZipFile(uploaded_file_sta, 'r') as z:
+            # 获取zip文件中的所有文件名列表
+            file_list = z.namelist()
+
+            # 创建一个空列表用于存储所有的DataFrame
+            df1_ts = []
+
+            # 遍历文件列表
+            for file_name in file_list:
+                with z.open(file_name) as f:
+                    # 读取csv文件并转换为DataFrame
+                    df = pd.read_excel(f)
+                    # 将DataFrame添加到列表中
+                    df1_ts.append(df)
+        df_ts = pd.concat(df1_ts,ignore_index=True)
+        df_ts.columns = df_ts_name.iloc[0, :]
 
         # kaishi_1, kaishi_2, kaishi_3 = st.columns([1, 1, 1])
         # kaishi_1.write("高频数据筛选前的数据:")
