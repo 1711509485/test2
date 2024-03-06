@@ -235,7 +235,7 @@ def show_base2():
 
 
     file = "必要数据\8_606炉次_241变量.xlsx"
-    file_name = "必要数据\8_606炉次_变量名.csv"
+    file_name_2 = "必要数据\8_606炉次_变量名.csv"
 
     def load_sta_data(file):
         data = pd.read_excel(file)
@@ -440,7 +440,7 @@ def show_base2():
         for column in data.columns:
             data[column] = data[column].apply(
                 lambda x: round(x) if isinstance(x, (int, float)) and (x > 1 or x < -1) else x)
-        sta_name = pd.read_csv(file_name).iloc[:, 1].tolist()
+        sta_name = pd.read_csv(file_name_2).iloc[:, 1].tolist()
         Clean_normal1 = data[(data['温度控制目标符合标签'] == 1) & (data['吹炼后期耗氧量'] != 0)]
         Clean_abnormal1 = data[(data['温度控制目标符合标签'] == 0) & (data['吹炼后期耗氧量'] != 0)]
 
