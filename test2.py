@@ -234,8 +234,8 @@ def show_base2():
     pd.set_option('display.float_format', lambda x: '{:.2f}'.format(x))
 
 
-    file = "必要数据\8_606炉次_241变量.xlsx"
-    file_name_2 = "必要数据\8_606炉次_变量名.csv"
+    file = "必要数据/8_606炉次_241变量.xlsx"
+    file_name_2 = "必要数据/8_606炉次_变量名.csv"
 
     def load_sta_data(file):
         data = pd.read_excel(file)
